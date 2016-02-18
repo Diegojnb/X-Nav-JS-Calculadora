@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Ejercicio javascript</title>
+	</head>
+
+  <body>
+  <style type="text/css" media="screen">
+   body{
+     margin-left:2em;
+     margin-top:2em;
+   }
+   a{
+     padding:.4em;
+     margin-right: 0.5em;
+     border: outset #1E90FF;
+   }
+   #display{
+     padding:.4em;
+     border: inset #696969;
+   }
+   </style>
+
+    <p>Calculadora de numeros binarios</p>
+		<p>
+			<span id="res"></span> <a href="javascript:generate('display',1)">1</a>
+      <a href="javascript:generate('display',0)">0</a>
+      <a href="javascript:sum('display',0)">  +
+      <a href="javascript:equal('display',0)">  =
+      <a href="javascript:del('display')">  C
+      </a><span id="display" class="display"></span>
+		</p>
+    </p>
+	</body>
+
+  <script>
+    var valor;
+
+    function generate(id,value){
+      var element = document.getElementById(id);
+      element.innerHTML = value;
+    }
+
+    function sum(id,value){
+      var element = document.getElementById(id);
+      if (element.innerHTML != "") {
+        valor = element.innerHTML;
+      }
+    }
+
+    function equal(id,value){
+      var element = document.getElementById(id);
+      if (element.innerHTML != "") {
+        sum1= parseInt(element.innerHTML,2);
+        sum2= parseInt(valor,2);
+        resultado = sum1 + sum2;
+        resultadobin = dec2bin(resultado);
+        element.innerHTML = resultadobin;
+      }
+    }
+
+    function del(id){
+      var element = document.getElementById(id);
+      element.innerHTML = "";
+      valor = 0;
+    }
+
+    function dec2bin(i)
+    {
+    	return (i<1)?"":dec2bin((i-(i%2))/2)+i%2;
+    }
+  </script>
+</html>
